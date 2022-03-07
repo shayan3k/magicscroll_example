@@ -6,7 +6,7 @@ import { Controller, Scene } from "react-scrollmagic";
 
 export default function Home() {
   const videoRef = useRef(null);
-  console.log(videoRef);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -22,6 +22,7 @@ export default function Home() {
       <div className={styles.main2}>
         <div className="section" />
         <div id="trigger1" />
+
         <video width="600" muted preload ref={videoRef}>
           <source
             src={`https://cdn.ananaspizza.de/file/malte-image-store/v9-webm.webm`}
@@ -36,10 +37,12 @@ export default function Home() {
             indicators={true}
           >
             {(progress, event) => {
-              console.log(videoRef, videoRef?.current);
+              console.log(videoRef?.current);
+
+              if (videoRef !== null) {
                 videoRef?.current?.currentTime = progress * 2;
-              
-              return <h1>hello world</h1>;
+              }
+              return <></>;
             }}
           </Scene>
         </Controller>
